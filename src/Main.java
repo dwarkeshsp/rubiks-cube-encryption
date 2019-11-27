@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class Main {
 
@@ -9,17 +10,17 @@ public class Main {
     static byte[] message;
 
     public static void main(String[] args) throws IOException {
+        if (demo()) {
+            return;
+        }
         JOptionPane.showMessageDialog(null, Utilities.intro());
         String username = JOptionPane.showInputDialog("Username:\n(Just to help name files)");
-
-        String[] possibleValues = {"Encrypt", "Decrypt"};
-//        String eOrD = "d";
-        String eOrD = (String) JOptionPane.showInputDialog(null, "Encrypt or Decrypt?", "Mode", JOptionPane.INFORMATION_MESSAGE, null, possibleValues, possibleValues[0]);
+        String[] possibleValuesEOrD = { "Encrypt", "Decrypt" };
+        String eOrD = (String) JOptionPane.showInputDialog(null, "Encrypt or Decrypt?", "Mode",
+                JOptionPane.INFORMATION_MESSAGE, null, possibleValuesEOrD, possibleValuesEOrD[0]);
         file = Utilities.getFile("Pick the message\nIf you don't pick a .txt file, you'll get hieroglyphics");
-//        file = new File("C:\\Users\\dwark\\IdeaProjects\\Rubik's Cube Encryption\\Rubik's Encrypted message.txt");
-//        file = new File("C:\\Users\\dwark\\IdeaProjects\\Rubik's Cube Encryption\\message.txt");
-        dh = new DiffieHellman(username);
         message = Utilities.readFile(file);
+        dh = new DiffieHellman(username);
 
         if (eOrD == "Encrypt") {
             System.out.println("E");
@@ -27,6 +28,21 @@ public class Main {
         } else {
             System.out.println("D");
             decrypt();
+        }
+    }
+
+    private static boolean demo() throws IOException {
+        String[] possibleValuesDemoOrNo = { "Demo", "Real" };
+        String demoOrNo = (String) JOptionPane.showInputDialog(null,
+                "Do you just want to see a quick demo or do you want to encrypt or decrypt your own message?", "Mode",
+                JOptionPane.INFORMATION_MESSAGE, null, possibleValuesDemoOrNo, possibleValuesDemoOrNo[0]);
+        if (demoOrNo) {
+            URL path = Main.class.getResource("demoMessage.txt");
+            file = new File(path.getFile());
+            message = Utilities.readFile(file);
+            
+
+
         }
     }
 

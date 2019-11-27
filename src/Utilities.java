@@ -43,8 +43,7 @@ public class Utilities {
     }
 
     public static String intro() {
-        return "                                                                How this works:" +
-                "\nYou're either about to scramble or unscrambe a message";
+        return "How this works:\nYou're either about to scramble or unscrambe a message";
     }
 
 }

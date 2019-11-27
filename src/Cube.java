@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
+import GridGUI;
 
 public class Cube {
 
@@ -14,8 +15,10 @@ public class Cube {
         size = size < 3 ? 3 : size;
         this.key = key;
         createCube(message);
-        String[] possibleValues = {"Show the cube (Looks really cool plus it's kinda the whole point)", "Don't show (If your message is really really big)"};
-        String showOrNot = (String) JOptionPane.showInputDialog(null, "Do you wanna watch the cube being encrypted?", "Show Cube?", JOptionPane.INFORMATION_MESSAGE, null, possibleValues, possibleValues[0]);
+        String[] possibleValues = { "Show the cube (Looks really cool plus it's kinda the whole point)",
+                "Don't show (If your message is really really big)" };
+        String showOrNot = (String) JOptionPane.showInputDialog(null, "Do you wanna watch the cube being encrypted?",
+                "Show Cube?", JOptionPane.INFORMATION_MESSAGE, null, possibleValues, possibleValues[0]);
         if (showOrNot == possibleValues[0]) {
             initiateShown(eOrD);
         } else {
@@ -23,7 +26,7 @@ public class Cube {
         }
     }
 
-    //delete
+    // delete
     public void changeKeyAndContinue(int[] key) {
         this.key = key;
         initiateShown("Decoding");
@@ -50,21 +53,23 @@ public class Cube {
     }
 
     private int getSpeed() {
-        String[] possibleValues = {"As Fast as Possible (So fast you won't see it)", "Fast", "Medium", "Slow", "Waiting for the end of times"};
-        String speedString = (String) JOptionPane.showInputDialog(null, "How fast should the cube twist?", "Speed", JOptionPane.INFORMATION_MESSAGE, null, possibleValues, possibleValues[1]);
+        String[] possibleValues = { "As Fast as Possible (So fast you won't see it)", "Fast", "Medium", "Slow",
+                "Waiting for the end of times" };
+        String speedString = (String) JOptionPane.showInputDialog(null, "How fast should the cube twist?", "Speed",
+                JOptionPane.INFORMATION_MESSAGE, null, possibleValues, possibleValues[1]);
         switch (speedString) {
-            case "As Fast as Possible (So fast you won't see it)":
-                return 0;
-            case "Fast":
-                return 50;
-            case "Medium":
-                return 250;
-            case "Slow":
-                return 1000;
-            case "Waiting for the end of times":
-                return 5000;
-            default:
-                throw new Error("No speed caught for " + speedString);
+        case "As Fast as Possible (So fast you won't see it)":
+            return 0;
+        case "Fast":
+            return 50;
+        case "Medium":
+            return 250;
+        case "Slow":
+            return 1000;
+        case "Waiting for the end of times":
+            return 5000;
+        default:
+            throw new Error("No speed caught for " + speedString);
         }
     }
 
@@ -90,7 +95,7 @@ public class Cube {
                 gIndex++;
             }
         }
-        //fill null stickers
+        // fill null stickers
         for (int i = 0; i < message.length; i++) {
             for (int j = 0; j < message[0].length; j++) {
                 if (message[i][j] == null) {
@@ -103,12 +108,12 @@ public class Cube {
     private void twistCube(int k) {
         int totalTypes = 6 * (size / 2) * 2;
         k %= totalTypes;
-        //type = 0 to 5
+        // type = 0 to 5
         int type = k / ((size / 2) * 2);
 
         int mag = 1 + (k / 2) % (size / 2);
         int inverse = k % 2;
-        //turn three times to get inverse
+        // turn three times to get inverse
         int repeat = inverse == 1 ? 3 : 1;
         while (repeat != 0) {
             twistSwitch(type, mag);
@@ -118,32 +123,32 @@ public class Cube {
 
     private void twistSwitch(int type, int mag) {
         switch (type) {
-            case 0:
-                System.out.println("front " + mag);
-                frontTwist(mag);
-                break;
-            case 1:
-                System.out.println("right " + mag);
-                rightTwist(mag);
-                break;
-            case 2:
-                System.out.println("up " + mag);
-                upTwist(mag);
-                break;
-            case 3:
-                System.out.println("back " + mag);
-                backTwist(mag);
-                break;
-            case 4:
-                System.out.println("left " + mag);
-                leftTwist(mag);
-                break;
-            case 5:
-                System.out.println("down " + mag);
-                downTwist(mag);
-                break;
-            default:
-                throw new Error("Type not caught. Type: " + type);
+        case 0:
+            System.out.println("front " + mag);
+            frontTwist(mag);
+            break;
+        case 1:
+            System.out.println("right " + mag);
+            rightTwist(mag);
+            break;
+        case 2:
+            System.out.println("up " + mag);
+            upTwist(mag);
+            break;
+        case 3:
+            System.out.println("back " + mag);
+            backTwist(mag);
+            break;
+        case 4:
+            System.out.println("left " + mag);
+            leftTwist(mag);
+            break;
+        case 5:
+            System.out.println("down " + mag);
+            downTwist(mag);
+            break;
+        default:
+            throw new Error("Type not caught. Type: " + type);
         }
     }
 
@@ -418,11 +423,11 @@ public class Cube {
         return sb.toString();
     }
 
-//    public String toString() {
-//        StringBuilder result = new StringBuilder();
-//        for (int i = 0; i < message.length; i++) {
-//            for (int j = 0)
-//        }
-//        return result.toString();
-//    }
+    // public String toString() {
+    // StringBuilder result = new StringBuilder();
+    // for (int i = 0; i < message.length; i++) {
+    // for (int j = 0)
+    // }
+    // return result.toString();
+    // }
 }

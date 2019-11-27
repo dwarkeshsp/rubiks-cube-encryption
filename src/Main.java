@@ -40,9 +40,14 @@ public class Main {
             URL path = Main.class.getResource("demoMessage.txt");
             file = new File(path.getFile());
             message = Utilities.readFile(file);
-            
-
-
+            path = Main.class.getResource("myFile.txt");
+            File keyFile = new File(path.getFile());
+            String key = new String(Utilities.readFile(keyFile));
+            Cube cube = new Cube(message, dh.arrayKey(), "Demo");
+            return true;
+        }
+        else {
+            return false;
         }
     }
 

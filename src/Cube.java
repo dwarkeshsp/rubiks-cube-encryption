@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 import GridGUI;
+import DiffieHellman;
 
 public class Cube {
 
@@ -15,6 +16,11 @@ public class Cube {
         size = size < 3 ? 3 : size;
         this.key = key;
         createCube(message);
+        if (eOrD.equals("Demo")) {
+            initiateShown("Encrypt");
+            changeKeyAndContinue();
+            return;
+        }
         String[] possibleValues = { "Show the cube (Looks really cool plus it's kinda the whole point)",
                 "Don't show (If your message is really really big)" };
         String showOrNot = (String) JOptionPane.showInputDialog(null, "Do you wanna watch the cube being encrypted?",
@@ -26,10 +32,9 @@ public class Cube {
         }
     }
 
-    // delete
-    public void changeKeyAndContinue(int[] key) {
-        this.key = key;
-        initiateShown("Decoding");
+    private void changeKeyAndContinue() {
+        this.key = DiffieHellman.reverseKey(key);
+        initiateShown("Decrpyt");
     }
 
     private void initiateHidden(String eOrD) {

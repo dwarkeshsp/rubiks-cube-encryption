@@ -16,8 +16,8 @@ public class Cube {
         size = size < 3 ? 3 : size;
         this.key = key;
         createCube(message);
-        if (eOrD.equals("Demo")) {
-            initiateShown("Encrypt");
+        if (eOrD == "Demo") {
+            initiateShown("Encrpyting");
             changeKeyAndContinue();
             return;
         }
@@ -34,7 +34,7 @@ public class Cube {
 
     private void changeKeyAndContinue() {
         this.key = DiffieHellman.reverseKey(key);
-        initiateShown("Decrpyt");
+        initiateShown("Decrpyting");
     }
 
     private void initiateHidden(String eOrD) {

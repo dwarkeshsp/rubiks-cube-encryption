@@ -36,17 +36,14 @@ public class Main {
         String demoOrNo = (String) JOptionPane.showInputDialog(null,
                 "Do you just want to see a quick demo or do you want to encrypt or decrypt your own message?", "Mode",
                 JOptionPane.INFORMATION_MESSAGE, null, possibleValuesDemoOrNo, possibleValuesDemoOrNo[0]);
-        if (demoOrNo) {
-            URL path = Main.class.getResource("demoMessage.txt");
-            file = new File(path.getFile());
+        if (demoOrNo == "Demo") {
+            file = new File("demoMessage.txt");
             message = Utilities.readFile(file);
-            path = Main.class.getResource("myFile.txt");
-            File keyFile = new File(path.getFile());
+            File keyFile = new File("demoKey.txt");
             String key = new String(Utilities.readFile(keyFile));
-            Cube cube = new Cube(message, dh.arrayKey(), "Demo");
+            new Cube(message, DiffieHellman.arrayKey(key), demoOrNo);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -70,6 +67,5 @@ public class Main {
         fileName = "Rubik's Decrypted " + fileName;
         Utilities.writeMessage(fileName, message);
     }
-
 
 }

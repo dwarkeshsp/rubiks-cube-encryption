@@ -15,7 +15,10 @@ public class GridGUI {
         frame = new JFrame(name);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(width, length);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        // frame.setUndecorated(true);
+        // frame.setVisible(true);
+        // frame.setSize(width, length);
         this.message = message;
         width = message.length;
         length = message[0].length;

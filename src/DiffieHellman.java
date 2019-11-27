@@ -63,13 +63,7 @@ public class DiffieHellman {
         return sharedKey;
     }
 
-    public int[] arrayKey(String key) {
-        sharedKey = key;
-        return arrayKey();
-    }
-
-    public int[] arrayKey() {
-        String sKey = sharedKey.toString();
+    public static int[] arrayKey(String sKey) {
         int remainder = 2466 - sKey.length();
         if (remainder == -1) {
             sKey = sKey.substring(1);
@@ -94,6 +88,11 @@ public class DiffieHellman {
         }
         key[keyIndex] = Integer.parseInt(currentInt);
         return key;
+    }
+
+    public int[] arrayKey() {
+        String sKey = sharedKey.toString();
+        return arrayKey(sKey);
     }
 
     public int[] reverseArrayKey() {

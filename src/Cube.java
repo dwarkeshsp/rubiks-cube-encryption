@@ -1,8 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
-import GridGUI;
-import DiffieHellman;
+// import GridGUI;
+// import DiffieHellman;
 
 public class Cube {
 
@@ -17,7 +17,7 @@ public class Cube {
         this.key = key;
         createCube(message);
         if (eOrD == "Demo") {
-            initiateShown("Encrpyting");
+            initiateShown("Encrypting");
             changeKeyAndContinue();
             return;
         }
@@ -34,7 +34,7 @@ public class Cube {
 
     private void changeKeyAndContinue() {
         this.key = DiffieHellman.reverseKey(key);
-        initiateShown("Decrpyting");
+        initiateShown("Decrypting");
     }
 
     private void initiateHidden(String eOrD) {

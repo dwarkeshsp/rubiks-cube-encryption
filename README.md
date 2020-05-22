@@ -1,5 +1,1 @@
-<!-- blank line -->
-<figure class="video_container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/fAaxahG39Dk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</figure>
-<!-- blank line -->
+[![Rubik's Cube Encryption](https://res.cloudinary.com/marcomontalbano/image/upload/v1590109921/video_to_markdown/images/youtube--fAaxahG39Dk-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/embed/fAaxahG39Dk "Rubik's Cube Encryption")
